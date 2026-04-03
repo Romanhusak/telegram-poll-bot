@@ -10,28 +10,19 @@ bot.start((ctx) => {
   ctx.reply('Бот працює 🚀');
 });
 
-// тест
-bot.command('test', (ctx) => {
-  bot.telegram.sendPoll(
-    CHAT_ID,
-    'НОВИЙ ТЕСТ 🔥',
-    ['1', '2'],
-    { is_anonymous: false }
-  );
-});
-
-// авто кожну хвилину (для тесту)
-cron.schedule('* * * * *', () => {
+// авто кожну хвилину (виправив,тепер кожен день о 12:00)
+cron.schedule('0 12 * * *', () => {
   bot.telegram.sendPoll(
     CHAT_ID,
     'волейбол сьогодні?',
-    ['13', '14', '15', '16', '17'],
+    ['13','14','15','16','17','18','19'],
     { is_anonymous: false }
   );
 
-  console.log('Poll sent');
+  console.log('Poll sent at:', new Date());
 }, {
-  timezone: 'Europe/Warsaw'
+  scheduled: true,
+  timezone: "Europe/Warsaw"
 });
 
 bot.launch();
