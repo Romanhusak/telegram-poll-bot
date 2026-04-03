@@ -1,7 +1,10 @@
+require('dotenv').config();
 const { Telegraf } = require('telegraf');
 const cron = require('node-cron');
 
-const bot = new Telegraf('8489827420:AAH6Uj7WZ70mn5bT3SXnwzZqdD3k6yK_NQ0');
+require('dotenv').config();
+
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
 const CHAT_ID = -1003775852787;
 
