@@ -10,6 +10,21 @@ bot.start((ctx) => {
   ctx.reply('Бот працює 🚀');
 });
 
+// додаткова команда /go
+bot.command('go', (ctx) => {
+  bot.telegram.sendPoll(
+    ctx.chat.id,
+    'волейбол сьогодні?',
+    ['13','14','15','16','17','18','19'],
+    { is_anonymous: false }
+  )
+  .then(() => ctx.reply('Опитування створено ✅'))
+  .catch((err) => {
+    console.error(err);
+    ctx.reply('Не вдалося створити опитування ❌');
+  });
+});
+
 // авто кожну хвилину (виправив,тепер кожен день о 12:00)
 cron.schedule('0 12 * * *', () => {
   bot.telegram.sendPoll(
