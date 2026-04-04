@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-const CHAT_ID = -1003775852787;
+const CHAT_ID = -8704207276;
 
 // старт
 bot.start((ctx) => {
